@@ -47,7 +47,7 @@ Dans cette section vous devez illustrer brièvement le contexte et fournir un ap
 
 Insérez ici un bref paragraphe introductif de la première version de la maquette, ainsi qu'une capture d'écran de la page d'accueil et [le lien cliquable dans le texte](https://maltt.unige.ch)[^1], avec l'URL en note de bas de page.
 
-[^1]: https://maltt.unige.ch
+[^1]: <https://maltt.unige.ch>
 
 Faites attention par la suite de laisser cette première version intacte et accessible pour garder trace de l'évolution de votre projet dans la deuxième version. On doit pouvoir accéder à la maquette telle qu'elle était à ce stade de l'itération de votre projet.
 
@@ -223,7 +223,7 @@ Proposez une brève synthèse des points positifs et négatifs que les tests uti
 
 Insérez à cet endroit un bref paragraphe introductif de la deuxième version de la maquette ainsi qu'une capture d'écran de la page d'accueil et [le lien cliquable dans le texte](https://tecfa.unige.ch)[^2], avec le URL en note de bas de page. Faites bien attention à utiliser un lien différent de la première version qui doit rester intacte.
 
-[^2]: https://tecfa.unige.ch
+[^2]: <https://tecfa.unige.ch>
 
 ![Capture d'écran de la deuxième version de la page d'accueil de votre maquette interactive.](images/capture-ecran-page-accueil-version-2.png "Capture d'écran de la deuxième version de la page d'accueil de votre maquette interactive.")
 
@@ -241,14 +241,22 @@ Si pertinent, vous pouvez ajouter une dernière sous-sections dans laquelle vous
 
 # Conclusion
 
-Cette section propose une synthèse générale du projet, comme par exemple : • Objectifs atteints et pas atteints • Futurs développements • Bilan général
+Cette section propose une synthèse générale du projet, comme par exemple :
+
+-   Objectifs atteints et pas atteints
+
+-   Futurs développements
+
+-   Bilan général
 
 \newpage
+
 # Références/Bibliographie
 
 Insérez ici les références utilisées et citées correctement dans le texte selon les normes de votre domaine académique ou professionnel (e.g. normes APA).
 
 \newpage
+
 # Annexes
 
 Placez ici les annexes que vous cités dans le texte.
