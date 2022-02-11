@@ -122,7 +122,7 @@ Résumé les éléments principaux ressortis grâce au test des 5 seconds. Si pe
 
 ## Réalisation des tâches
 
-Proposez dans cette section un tableau récapitulatif des tâches effectuées, avec le numéro de la tâche par rapport à la liste du scénario, le temps moyen de passation, le nombre d'utilisateurs qui ont réussi la tâche, et un bref bilan . Le tableau doit présenter les colonnes suivantes :
+Proposez dans cette section un tableau récapitulatif des tâches effectuées, avec le numéro de la tâche par rapport à la liste du scénario, le temps moyen de passation, le nombre d'utilisateurs qui ont réussi la tâche, et un bref bilan. Le tableau doit présenter les colonnes suivantes :
 
 ```{r task-table}
 tasks <- tibble(
