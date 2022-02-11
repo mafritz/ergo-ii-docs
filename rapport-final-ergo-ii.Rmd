@@ -82,17 +82,19 @@ Illustrez ici les caractéristiques du public cible visé. En cas de public cibl
 
 ## Scénario
 
-Décrivez dans cette section la mise en situation et illustrez la description des tâches qui a été partagée avec les utilisateurs. Pour chaque tâche, indiquez la solution attendue. En cas de plusieurs possibilités, indiquez la solution optimale ou plus rapide, et éventuellement une alternative cohérente. Par exemple :
+Décrivez dans cette section la mise en situation et illustrez la description des tâches qui a été partagée avec les utilisateurs. Pour chaque tâche, indiquez une brève labellisation qui permet ensuite de se référer facilement à la tâche dans le reste du document. Ensuite, formulez la description de la tâche telle qu'elle est présentée aux utilisateurs. La solution attendue doit apparaître de manière compréhensible. En cas de plusieurs possibilités, indiquez la solution optimale ou plus rapide, et éventuellement une alternative cohérente. Enfin, justifiez brièvement la pertinence et/ou l'intérêt de la tâche, par exemple en faisant un lien avec les informations recueillies dans les phases précedentes (e.g. analyse des besoins, personas, ...) ou les éléments critiques en phase de conception/design. Par exemple :
 
 1.  **Recherche adresse**
 
 -   Description : *Vous ne connaissez pas du tout ce musée et vous n'avez aucune idée d'où est-ce qu'il se trouve. Votre première préoccupation est donc de savoir s'il est proche de chez vous. Cherchez l'adresse du musée et s'il y a un plan de localisation disponible*
 -   Solution : Depuis la Home > Menu principal **Contacts** > Section **Comment nous rejoindre**
+-   Justification : Le musée étant nouveau et peu connu, le commanditaire a demandé que son adresse soit facilement repérable.
 
 2.  **Prix de l'entrée**
 
 -   Description : *Vous souhaitez visiter le musée le dimanche, avec votre partenaire et vos deux enfants de 15 et 8 ans. Combien va vous coûter l'entrée au total ?*
 -   Solution : Depuis la Home > Menu principal **Tarifs** > Tableau de prix > 2x 10 Frs. (adulte) + 1x 5 Frs. (moins de 18 ans) + 1x gratuit (moins de 10 ans) = 25 Frs.
+-   Justification : Plusieurs personnes interviewées pendant l'analyse de l'activité ont indiqué d'apprécier des informations précises sur les différents tarifs d'entrée au musée, notamment de pouvoir connaître les prix avant de se rendre sur place. Une analyse de la concurrence a également mis en évidence que les prix du musée sont très concurrentiels par rapport à d'autres musées dans la région.
 
 **NB** : Vous pouvez organiser les informations comme vous voulez (liste ou tableau)
 
@@ -152,7 +154,7 @@ Proposez ici un tableau synthétique des problèmes **majeurs** rencontrés par 
 
 -   Description du problème : brève description de la problématique, avec référence à une ou plusieurs tâches
 
--   Diagnostic : identification du problème en fonction des critères de Bastien & Scapin. Plusieurs critères peuvent s'appliquer à un problème
+-   Diagnostic : identification du problème en fonction des critères de Bastien & Scapin [-@bastienCriteresErgonomiquesPour1993]. Plusieurs critères peuvent s'appliquer à un problème
 
 -   Taux : nombre d'utilisateur qui ont rencontré le problème sur le total des utilisateurs (e.g. 4 sur 6)
 
@@ -195,16 +197,16 @@ Analysez de manière approfondie les problèmes les plus graves. Essayez de grou
 
 -   Que s'est-il passé : décrire précisément ce que voulait faire l'utilisateur, la façon dont a réagi le système.
 -   Quel était le problème du point de vue de l'utilisateur (insérez verbatim, copie d'écran ou indices de comportement) ?
--   Diagnostic : en utilisant la classification par critères (grille de Bastien et Scapin), identifiez les causes du problème en justifiant vos propos sur la base de vos observations ou de la littérature (scientifique ou professionnelle).
--   Remédiation proposée : que proposez-vous de changer dans le site ? Justifiez votre proposition sur la base du diagnostic et notamment de la catégorisation selon la grille de critères de Bastien et Scapin.
+-   Diagnostic : en utilisant la classification par critères de Bastien et Scapin ,[-@bastienCriteresErgonomiquesPour1993] identifiez les causes du problème en justifiant vos propos sur la base de vos observations ou de la littérature (scientifique ou professionnelle).
+-   Remédiation proposée : que proposez-vous de changer dans le site ? Justifiez votre proposition sur la base du diagnostic et notamment de la catégorisation selon la grille de critères de Bastien et Scapin [-@bastienCriteresErgonomiquesPour1993].
 
 Appuyez votre analyse avec des éléments multimédia (captures d'écrans, diagrammes, vidéos) qui facilitent la compréhension du problème.
 
 ## Résultats de l'échelle UX
 
-Adaptez le titre de la sous-section pour afficher l'acronyme de l'échelle d'utilisabilité/UX que vous avez adoptée. Dans le texte, citez *in extension* le nom de l'échelle et insérez au moins une citation.
+Adaptez le titre de la sous-section pour afficher l'acronyme de l'échelle d'utilisabilité/UX que vous avez adoptée. Dans le texte, citez *in extension* le nom de l'échelle et insérez au moins une citation, par exemple la version française du questionnaire AttrakDiff [@lallemand2015] ou la *Usability Metric for User Experience* [@finstad2010].
 
-Illustrez de manière graphique les résultats selon les items/dimensions propres à l'échelle que vous avez utilisée.
+Illustrez de manière graphique les résultats selon les items/dimensions propres à l'échelle que vous avez utilisée. Si l'échelle propose une forme de *benchmark* (i.e., comparaison par rapport à d'autres scores sur la même échelle), expliquez brièvement comme le critère de comparaison a été calculée et s'il est pertinent dans votre contexte spécifique.
 
 Commentez de manière critique les résultats :
 
@@ -251,9 +253,10 @@ Cette section propose une synthèse générale du projet, comme par exemple :
 
 \newpage
 
-# Références/Bibliographie
+# Références
 
-Insérez ici les références utilisées et citées correctement dans le texte selon les normes de votre domaine académique ou professionnel (e.g. normes APA).
+::: {#refs}
+:::
 
 \newpage
 
