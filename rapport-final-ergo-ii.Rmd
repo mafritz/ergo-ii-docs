@@ -65,7 +65,7 @@ Décrivez à cet endroit les choix de design les plus importantes que vous avez 
 
 Illustrez dans cette section des éléments critiques -- par exemple des choix difficiles -- au niveau du design et qui pourraient servir de base pour une ou plusieurs tâches du test utilisateur.
 
-# Méthodologie du test utilisateur
+# Méthode
 
 Décrivez dans les sous-sections les différentes éléments qui composent le test. Comme introduction général de la section, vous pouvez décrire brièvement les sous-sections. Par exemple :
 
