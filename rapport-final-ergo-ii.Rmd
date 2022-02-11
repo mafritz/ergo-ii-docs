@@ -243,10 +243,12 @@ Si pertinent, vous pouvez ajouter une dernière sous-sections dans laquelle vous
 
 Cette section propose une synthèse générale du projet, comme par exemple : • Objectifs atteints et pas atteints • Futurs développements • Bilan général
 
+\newpage
 # Références/Bibliographie
 
 Insérez ici les références utilisées et citées correctement dans le texte selon les normes de votre domaine académique ou professionnel (e.g. normes APA).
 
+\newpage
 # Annexes
 
 Placez ici les annexes que vous cités dans le texte.
