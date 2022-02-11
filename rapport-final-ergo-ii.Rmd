@@ -29,11 +29,11 @@ source(here::here("settings", "custom.R"))
 
 # Note {.unnumbered}
 
-Ce document présente la structure et les contenus attendus pour le rapport individuel des tests utilisateurs effectués sur la première version de la maquette. Même si certaines parties du document sont partagées avec votre collègue, l'ensemble du document doit être rédigé de manière autonome.
+Ce document présente la structure et les contenus attendus pour le rapport final du projet ERGO II incluant une première version de la maquette interactive de votre projet, les détails et résultats des tests utilisateurs que vous avez menés, ainsi qu'une deuxième version de la maquette interactive qui a été modifiée suite aux résultats de ces tests.
 
 # Introduction
 
-Dans cette section vous devez illustrer brièvement le contexte et fournir un aperçu général de l'ensemble du document afin que l'équipe UX et/ou le commanditaire sachent quelles informations trouver dans ces pages.
+Dans cette section vous devez illustrer brièvement le contexte et fournir un aperçu général de l'ensemble du document afin que l'équipe UX et/ou le commanditaire sachent quelles informations trouver dans le document.
 
 Éléments qui peuvent être utiles dans cette section :
 
@@ -61,7 +61,7 @@ Décrivez à cet endroit les choix de design les plus importantes que vous avez 
 -   Une description de l'architecture de l'information (e.g. menu principale) avec éventuellement une *site map*
 -   Des éléments de votre *design system* qui véhiculent de l'information importante ou incitent les utilisateurs à effectuer une certaine action et explorer une certaine partie du site
 
-## Élément critiques dans la conception
+## Éléments critiques dans la conception
 
 Illustrez dans cette section des éléments critiques -- par exemple des choix difficiles -- au niveau du design et qui pourraient servir de base pour une ou plusieurs tâches du test utilisateur.
 
@@ -69,7 +69,7 @@ Illustrez dans cette section des éléments critiques -- par exemple des choix d
 
 Décrivez dans les sous-sections les différentes éléments qui composent le test. Comme introduction général de la section, vous pouvez décrire brièvement les sous-sections. Par exemple :
 
-*Cette section décrit les caractéristiques principales du test utilisateur effectué : le public cible visé et les participants retenus pour le test, le scénario adopté pour effectuer les tâches, la maquette sur laquelle a été effectué le test, ainsi que la procédure de passation.*
+*Cette section décrit les caractéristiques principales du test utilisateur effectué : le public cible visé et les participants retenus pour le test, le scénario adopté pour effectuer les tâches, ainsi que la procédure de passation.*
 
 ## Public cible et participants
 
@@ -82,7 +82,7 @@ Illustrez ici les caractéristiques du public cible visé. En cas de public cibl
 
 ## Scénario
 
-Décrivez dans cette section la mise en situation et illustrez la description des tâches qui a été partagée avec les utilisateurs. Pour chaque tâche, indiquez une brève labellisation qui permet ensuite de se référer facilement à la tâche dans le reste du document. Ensuite, formulez la description de la tâche telle qu'elle est présentée aux utilisateurs. La solution attendue doit apparaître de manière compréhensible. En cas de plusieurs possibilités, indiquez la solution optimale ou plus rapide, et éventuellement une alternative cohérente. Enfin, justifiez brièvement la pertinence et/ou l'intérêt de la tâche, par exemple en faisant un lien avec les informations recueillies dans les phases précedentes (e.g. analyse des besoins, personas, ...) ou les éléments critiques en phase de conception/design. Par exemple :
+Décrivez dans cette section la mise en situation et illustrez les tâches du test. Pour chaque tâche, indiquez une brève labellisation qui permet ensuite de se référer facilement à la tâche dans le reste du document. Ensuite, formulez la description de la tâche telle qu'elle est présentée aux utilisateurs. La solution attendue doit apparaître de manière compréhensible. En cas de plusieurs possibilités, indiquez la solution optimale ou plus rapide, et éventuellement une alternative cohérente. Enfin, justifiez brièvement la pertinence et/ou l'intérêt de la tâche, par exemple en faisant un lien avec les informations recueillies dans les phases précédentes (e.g. analyse des besoins, analye de l'activité, *personas*, ...) ou les éléments critiques en phase de conception/design. Par exemple :
 
 1.  **Recherche adresse**
 
@@ -100,7 +100,7 @@ Décrivez dans cette section la mise en situation et illustrez la description de
 
 ## Procédure
 
-Illustrez dans cette section le protocole de passation de vos tests. Vous pouvez faire un résumé des éléments principaux et fournir le protocole en annexe.
+Illustrez dans cette section le protocole de passation de vos tests. Vous pouvez faire un résumé des éléments principaux et fournir le protocole complet en annexe.
 
 Éléments qui peuvent figurer dans cette section :
 
@@ -118,7 +118,7 @@ Illustrez dans les sous-sections les résultats obtenus. En introduction de cett
 
 ## Test des 5 seconds
 
-Résumé les éléments principaux ressortis grâce au test des 5 seconds. Si pertinent, vous pouvez insérez un dessin illustratif de ce que les utilisateurs retiennet de l'exposition dans le texte et ajouter les autres fiches en annexe.
+Résumé les éléments principaux ressortis grâce au test des 5 seconds. Si pertinent, vous pouvez insérez un dessin illustratif de ce que les utilisateurs retiennent de l'exposition dans le texte et ajouter les autres fiches en annexe.
 
 ## Réalisation des tâches
 
@@ -152,7 +152,7 @@ Proposez ici un tableau synthétique des problèmes **majeurs** rencontrés par 
 
 -   Numéro progressif du problème
 
--   Description du problème : brève description de la problématique, avec référence à une ou plusieurs tâches
+-   Description du problème : brève description de la problématique, avec référence à une ou plusieurs tâches du scénario
 
 -   Diagnostic : identification du problème en fonction des critères de Bastien & Scapin [-@bastienCriteresErgonomiquesPour1993]. Plusieurs critères peuvent s'appliquer à un problème
 
@@ -196,7 +196,7 @@ problems %>%
 Analysez de manière approfondie les problèmes les plus graves. Essayez de grouper plusieurs problèmes du tableau de synthèse dans une thématique commune, par exemple par page ou fonctionnalité du site. Pour chaque problème ou thématique, illustrez les éléments suivants :
 
 -   Que s'est-il passé : décrire précisément ce que voulait faire l'utilisateur, la façon dont a réagi le système.
--   Quel était le problème du point de vue de l'utilisateur (insérez verbatim, copie d'écran ou indices de comportement) ?
+-   Quel était le problème du point de vue de l'utilisateur (insérez *verbatim*, copie d'écran ou indices de comportement) ?
 -   Diagnostic : en utilisant la classification par critères de Bastien et Scapin ,[-@bastienCriteresErgonomiquesPour1993] identifiez les causes du problème en justifiant vos propos sur la base de vos observations ou de la littérature (scientifique ou professionnelle).
 -   Remédiation proposée : que proposez-vous de changer dans le site ? Justifiez votre proposition sur la base du diagnostic et notamment de la catégorisation selon la grille de critères de Bastien et Scapin [-@bastienCriteresErgonomiquesPour1993].
 
@@ -235,7 +235,7 @@ Listez les modifications que vous avez apportées suite aux résultats du test u
 
 Justifiez vos remédiations en faisant référence aux informations illustrées dans la section sur les résultats. Utilisez des références croisées pour faciliter le repère des éléments saillants sans trop dupliquer les informations. Si possible et pertinent, mobilisez à nouveau les heuristiques pour mieux décrire les remédiations apportées.
 
-Vous pouvez appuyer vos modifications avec des captures d'écrans, mais évitez d'en mettre trop et limitez la capture aux éléments qui ont changé depuis la version précédente. Vous pouvez également combiner dans la même figure la version précédente et la version actuelle pour mettre encore plus en évidence ce qui a été modifié.
+Vous pouvez appuyer vos modifications avec des captures d'écrans, mais évitez d'en mettre trop et limitez la capture aux éléments qui ont changés depuis la version précédente. Vous pouvez également combiner dans la même figure la version précédente et la version actuelle pour mettre davantage en évidence ce qui a été modifié.
 
 ## Remédiations non apportées
 
