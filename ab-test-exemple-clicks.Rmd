@@ -1,0 +1,123 @@
+---
+title: "Test A/B fictif sur la fréquence d'utilisateurs cliquant le bouton d'inscription sur la page de présentation du site du Master MALTT"
+author:
+  - Mattia A. Fritz
+date: "`r format(Sys.time(), '%d/%m/%Y')`"
+lang: fr
+linestretch: 1.15
+output:
+  pdf_document:
+    toc: false
+    toc_depth: 1
+    number_sections: true
+    latex_engine: xelatex
+    extra_dependencies: ["flafter"]
+    includes:
+      in_header: "settings/preamble.tex"
+      #before_body: "settings/before-body.tex"
+      #after_body: "doc-suffix.tex"
+bibliography: bib/references.bib
+csl: settings/apa.csl
+#abstract: "This is my abstract."
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+Sys.setlocale("LC_ALL", "French")
+source(here::here("settings", "custom.R"))
+```
+
+```{r simulated-data}
+library(tidyverse)
+library(ids)
+library(here)
+set.seed(2796)
+
+N = 500
+
+data_a <- tibble(
+  id = random_id(N, 4),
+  version = "A",
+  subscription_click = sample(c("Yes", "No"), N, replace = TRUE, prob = c(0.18, 0.82))
+)
+
+data_b <- tibble(
+  id = random_id(N, 4),
+  version = "B",
+  subscription_click = sample(c("Yes", "No"), N, replace = TRUE, prob = c(0.27, 0.73))
+)
+
+data = bind_rows(data_a, data_b)
+
+data$version = as_factor(data$version)
+
+data <- data[sample(nrow(data)), ]
+
+chi <- chisq.test(table(data$version, data$subscription_click))
+
+write_csv(data, here("datasets/click_to_subscribe.csv"))
+```
+
+
+# Note {.unnumbered}
+
+Ce document représente un exemple pédagogique sur une manière possible de reporter les résultats d'un test A/B dans une perspective expérience utilisateur. Il est principalement destiné aux étudiant-es du cours **Design centré utilisateur et ergonomie II** du *Master of Science in Learning and Teaching Technologies* (MALTT) de l'Université de Genève.
+
+# Introduction
+
+Ce rapport présente les résultats d'un test A/B (*n.b.*, **FICTIF**) effectué sur la page d'accueil du site du *Master of Science in Learning and Teaching Technologies* (MALTT) de l'Université de Genève. Les responsables du Master étaient intéressés à rendre plus visible le bouton pour acéder à la page avec le formulaire d'inscription au Master affiché dans la page de présentation général de la formation.
+
+# Versions comparées
+
+Deux versions de la page de présentation générale du Master ont été testées. Les deux pages proposent les mêmes éléments graphiques et textuels, mais diffèrent dans la position du bouton qui permet de passer à la page du site avec le formulaire d'inscription.
+
+```{r wireframes, fig.cap="À gauche, la version A, avec bouton à la fin du texte. À droite, la version B, avec bouton figé sur le côté", out.width="80%", fig.align="center"}
+include_graphics(here("./images/maltt-subscription-wireframes.png"))
+
+```
+
+## Version A : Bouton à la fin du texte de présentation
+
+Dans la version A (Fig. 1 à gauche), le bouton est placé à la fin du texte de présentation, comme si cliquer le bouton pour passer à l'inscription était la naturelle conséquence une fois lu le texte par entier.
+
+## Version B : Bouton figé â côté du texte de présentation
+
+Dans la version B (Fig. 1 à droite), la largeur du texte de présentation a été diminué pour pouvoir afficher sur la droite de l'écran le bouton qui permet de passer à la page avec le formulaire d'inscription. Le bouton est en plus figé, de sorte que sa position n'est pas influencée par le défilement du texte de présentation. De cette manière, l'utilisateur peut cliquer sur le bouton à tout moment.
+
+# Test
+
+Les deux versions de la page de présentation ont été mises en ligne pendant le mois de mai 2020. À chaque visite identifiée comme nouvelle, l'une des deux pages été affichée aléatoirement. Parmi toutes les visualisations uniques du mois de mai, 500 visualisations pour la version A et 500 visualisations pour la version B ont été sélectionnées aléatoirement pour definir l'échantillon du test. Pour chaque visite, il a été rétenu si l'utilisateur est sortie de la page en cliquant sur le bouton *Inscription* ou pas.
+
+# Résultats
+
+Sur les `r N * 2` utilisateurs rétenus pour le test, `r data[data$subscription_click == "Yes",] %>% nrow()` ont cliqué sur le bouton d'inscription. La répartition par rapport à la version de la page est affichée dans le tableau suivant (Tab. 1).
+
+```{r}
+data %>% 
+  group_by(version, subscription_click) %>% 
+  summarise(
+    tot = n()
+  ) %>% 
+  ungroup() %>% 
+  pivot_wider(names_from = subscription_click, values_from = tot) %>%
+  mutate(
+    Utilisateurs = 500,
+  ) %>% 
+  relocate(Yes, .before = No) %>%
+  relocate(Utilisateurs, .before = Yes) %>% 
+  mutate(`Taux de clic` = paste0(printnum(Yes / 5), "%")) %>% 
+  rename(Version = version, Oui = Yes, Non = No) %>% 
+  kable(
+    caption = "Fréquence d'utilisateurs qui ont cliqué sur le bouton d'inscription en fonction de la version de la page",
+    align = "c",
+    booktabs = T, 
+    linesep = c("\\addlinespace")
+  ) |>  
+  kable_styling(latex_options = "HOLD_position")
+```
+
+Un test $\chi^2$ d'indépendance des fréquences avec la correction de continuité de Yates corrobore la présence d'une relation entre la version de la page et le nombre de clics sur le bouton *Inscription* ($\chi^2$(1, N = 1000) = 4.39, *p* = .036). La version B, celle avec le bouton figé sur le côté, a obtenu un taux de clic de 5 points de pourcentage plus élévé de la version A, avec le bouton à la fin du test.
+
+# Conclusion
+
+Les résultats du test A/B indiquent une meilleure performance de la version avec le bouton figé sur le côté (version B), qui a obtenu 5 points de pourcentage en plus. Cette augmentation est probablement due au fait que les utilisateurs peuvent cliquer sur le bouton dès qu'ils ont lu suffisamment d'informations, même sans avoir à défiler jusqu'à la fin du texte. **Avis : sur la base de ces résultats, le conseil est d'utiliser la version avec bouton figé sur le côté de l'écran (version B)**
