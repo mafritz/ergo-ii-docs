@@ -1,0 +1,110 @@
+---
+title: "Test A/B fictif sur le temps de fixation d'une image sur la page d'accueil du site du Master MALTT"
+author:
+  - Mattia A. Fritz
+date: "`r format(Sys.time(), '%d/%m/%Y')`"
+lang: fr
+linestretch: 1.15
+output:
+  pdf_document:
+    toc: false
+    toc_depth: 1
+    number_sections: true
+    latex_engine: xelatex
+    extra_dependencies: ["flafter"]
+    includes:
+      in_header: "settings/preamble.tex"
+      #before_body: "settings/before-body.tex"
+      #after_body: "doc-suffix.tex"
+bibliography: bib/references.bib
+csl: settings/apa.csl
+#abstract: "This is my abstract."
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE)
+Sys.setlocale("LC_ALL", "French")
+source(here::here("settings", "custom.R"))
+```
+
+```{r simulated-data}
+library(tidyverse)
+library(ids)
+library(here)
+set.seed(282)
+
+N = 30
+
+data_a <- tibble(
+  id = ids::random_id(N, bytes = 4),
+  age = sample(18:45, N, replace = TRUE),
+  version = "A",
+  seconds_fixation = rnorm(N, mean = 1.7, 0.5)
+)
+
+data_b <- tibble(
+  id = ids::random_id(N, bytes = 4),
+  age = sample(18:45, N, replace = TRUE),
+  version = "B",
+  seconds_fixation = rnorm(N, mean = 2.2, 0.9)
+)
+
+data <- bind_rows(data_a, data_b)
+data$version = as_factor(data$version)
+
+data <- data[sample(nrow(data)), ]
+
+test <- t.test(seconds_fixation ~ version, data)
+
+write_csv(data, here("datasets/fixation_maltt.csv"))
+```
+
+
+# Note {.unnumbered}
+
+Ce document représente un exemple pédagogique sur une manière possible de reporter les résultats d'un test A/B dans une perspective expérience utilisateur. Il est principalement destiné aux étudiant-es du cours **Design centré utilisateur et ergonomie II** du *Master of Science in Learning and Teaching Technologies* (MALTT) de l'Université de Genève.
+
+# Introduction
+
+Ce rapport présente les résultats d'un test A/B (*n.b.*, **FICTIF**) effectué sur la page d'accueil du site du *Master of Science in Learning and Teaching Technologies* (MALTT) de l'Université de Genève. Les responsables du Master étaient intéressés à comparer deux images, chacune véhiculant une perspective différente du Master. 
+
+# Versions comparées
+
+Le MALTT étant un Master combinant des aspects technologiques et humains, les responsables du programme désiraient savoir si le regard des utilisateurs est attiré plus par une image proposant seulement un artefact technologique (version A), ou par une image proposant des personnes qui intéragissent avec un artefact technologique (version B).
+
+```{r version-a, fig.cap="Version A, image technocentrée à gauche. Version B, image anthropocentréee à droite.", out.width="49%", fig.align='center', fig.show='hold'}
+include_graphics(c(here("./images/tech.jpg"), here("./images/tech_plus_people.jpg"))) 
+```
+
+## Version A : Image technocentrée
+
+L'image de la version A (Fig. 1, gauche) propose le détail d'un clavier d'ordinateur sur lequel apparaît une touche verte avec la labellisation *Learning* et l'icône d'un livre papier ouvert. L'image essaie de véhiculer la contiguïté entre l'apprentissage *traditionnel* et l'apprentissage médiatisé par ordinateur. 
+
+## Version B : Image anthropocentrée
+
+L'image de la version B (Fig. 1, droite)  propose trois personnes, implicitement des étudiant-es, assises sur un canapé avec un laptop ouvert sur la table. Chaque étudiant-e tend une maine vers le laptop dans une manifestation d'attention conjointe. L'image essaie de véhiculer le support de la technologie à la dimension humaine et collaborative de l'apprentissage.
+
+# Test
+
+$N = `r nrow(data)`$ participants ($M_{age} = `r mean(data$age) %>% printnum()`$) recrutés dans le hall de l'Université de Genève ont participé au test effectué à l'aide d'un dispositif eye-tracker Tobii TX300. Chaque participant a été aléatoirement assigné à la vision d'une maquette de la page d'accueil du site web du MALTT proposant la version A (30 participants) ou la version B (30 participants) de l'image. Les deux images, de la même taille et placées exactement au même endroit sur la maquette, représentaient le seul élément différent dans les deux maquettes. Les participants ont reçu comme seule consigne d'explorer visuellement la maquette de la page d'accueil pendant 30 seconds.
+
+# Résultats
+
+En général, l'image de la page d'accueil a été fixée pour $M = `r mean(data$seconds_fixation) %>% printnum()`$ seconds ($SD = `r sd(data$seconds_fixation) %>% printnum()`$). Avec la version A de l'image, la *technocentrée*, le temps de fixation moyen a été de $M = `r mean(data[data$version == "A", ]$seconds_fixation) %>% printnum()`$ seconds ($SD = `r sd(data[data$version == "A", ]$seconds_fixation) %>% printnum()`$). Pour la version B, l'*anthropocentrée*, le temps de fixation moyen a été de $M = `r mean(data[data$version == "B", ]$seconds_fixation) %>% printnum()`$ seconds ($SD = `r sd(data[data$version == "B", ]$seconds_fixation) %>% printnum()`$).
+
+```{r, fig.cap="Comparaison du temps de fixation sur les deux versions des images. Les barres représentent les intervalles de confiance à 95 pourcent.", out.width="45%", fig.align="center"}
+ggplot(data, aes(x = version, y = seconds_fixation, color = version)) +
+  geom_jitter(size = 2, alpha = 0.2) +
+  stat_summary(fun.data = mean_cl_normal, geom = "errorbar", width = 0.3, position = position_dodge(width = 0.1)) +
+  stat_summary(fun = mean, geom = "point", size = 6, shape = 15, position = position_dodge(width = 0.6)) +
+  labs(x = NULL, y = "Seconds de fixation") +
+  theme(legend.position = "none") +
+  scale_color_viridis_d() +
+  NULL
+```
+
+Un t-test bilatéral à échantillons indépendants avec hétérogénéité de la variance (Welch t-test) corrobore la présence d'une différence dans le temps de fixation pour les deux images (`r apa_print(test)$full_result`). La version B de l'image a été fixée environ 0.5 seconds en plus de la version A, bien que l'image *anthropocentrée* ait suscité plus de variation ($SD = `r sd(data[data$version == "B", ]$seconds_fixation) %>% printnum()`$ vs. $SD = `r sd(data[data$version == "A", ]$seconds_fixation) %>% printnum()`$).
+
+# Conclusion
+
+Le résultats du test A/B corrobore un temps de fixation plus élevé pour la version B de l'image comparé à la version A, avec une différence d'environ 0.5 seconds. **Avis : sur la base de ces résultats, le conseil est d'utiliser la version *anthroponcentrée* de l'image (version B)**
