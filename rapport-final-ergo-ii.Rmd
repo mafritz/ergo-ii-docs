@@ -197,7 +197,7 @@ Analysez de manière approfondie les problèmes les plus graves. Essayez de grou
 
 -   Que s'est-il passé : décrire précisément ce que voulait faire l'utilisateur, la façon dont a réagi le système.
 -   Quel était le problème du point de vue de l'utilisateur (insérez *verbatim*, copie d'écran ou indices de comportement) ?
--   Diagnostic : en utilisant la classification par critères de Bastien et Scapin ,[-@bastienCriteresErgonomiquesPour1993] identifiez les causes du problème en justifiant vos propos sur la base de vos observations ou de la littérature (scientifique ou professionnelle).
+-   Diagnostic : en utilisant la classification par critères de Bastien et Scapin \[-@bastienCriteresErgonomiquesPour1993\], identifiez les causes du problème en justifiant vos propos sur la base de vos observations ou de la littérature (scientifique ou professionnelle).
 -   Remédiation proposée : que proposez-vous de changer dans le site ? Justifiez votre proposition sur la base du diagnostic et notamment de la catégorisation selon la grille de critères de Bastien et Scapin [-@bastienCriteresErgonomiquesPour1993].
 
 Appuyez votre analyse avec des éléments multimédia (captures d'écrans, diagrammes, vidéos) qui facilitent la compréhension du problème.
