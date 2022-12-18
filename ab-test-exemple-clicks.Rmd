@@ -31,6 +31,8 @@ source(here::here("settings", "custom.R"))
 library(tidyverse)
 library(ids)
 library(here)
+library(papaja)
+library(easystats)
 set.seed(2796)
 
 N = 500
@@ -44,7 +46,7 @@ data_a <- tibble(
 data_b <- tibble(
   id = random_id(N, 4),
   version = "B",
-  subscription_click = sample(c("Yes", "No"), N, replace = TRUE, prob = c(0.27, 0.73))
+  subscription_click = sample(c("Yes", "No"), N, replace = TRUE, prob = c(0.34, 0.66))
 )
 
 data = bind_rows(data_a, data_b)
@@ -54,6 +56,8 @@ data$version = as_factor(data$version)
 data <- data[sample(nrow(data)), ]
 
 chi <- chisq.test(table(data$version, data$subscription_click))
+
+effectsize(chi)
 
 write_csv(data, here("datasets/click_to_subscribe.csv"))
 ```
